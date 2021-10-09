@@ -29,3 +29,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+.Ds_Store 
+# gitで不要ファイルを削除 211009
