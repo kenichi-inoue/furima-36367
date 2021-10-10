@@ -53,6 +53,7 @@ Things you may want to cover:
 | days_to_ship        | string     | null: false       |
 | purchase_price      | string     | null: false       |
 | user                | references |                   |
+| purchase            | references |                   |
 
 ### Association
 
