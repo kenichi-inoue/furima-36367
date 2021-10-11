@@ -27,14 +27,16 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column               | Type   | Options     |
-| ------------------   | ------ | ----------- |
-| nickname             | string | null: false |
-| email                | string | null: false |
-| encrypted_password   | string | null: false |
-| user_name            | string | null: false |
-| user_katakana_name   | string | null: false |
-| birth_date           | string | null: false |
+| Column                      | Type   | Options                    |
+| ------------------          | ------ | -----------                |
+| nickname                    | string | null: false                |
+| email                       | string | null: false , unique: true |
+| encrypted_password          | string | null: false                |
+| user_family_name            | string | null: false                |
+| user_first_name             | string | null: false                |
+| katakana_user_family_name   | string | null: false                |
+| katakana_user_first_name    | string | null: false                |
+| birthday                    | date   | null: false                |
 
 ### Association
 
@@ -43,17 +45,17 @@ Things you may want to cover:
 
 ## products テーブル
 
-| Column              | Type       | Options           |
-| ---------           | ---------- | ----------------- |
-| product_name        | string     | null: false       |
-| product_discription | text       | null: false       |
-| product_category    | string     | null: false       |
-| shipping burden     | string     | null: false       |
-| shipping area       | string     | null: false       |
-| days_to_ship        | string     | null: false       |
-| purchase_price      | string     | null: false       |
-| user                | references |                   |
-| purchase            | references |                   |
+| Column                 | Type       | Options           |
+| ---------              | ---------- | ----------------- |
+| product_name           | string     | null: false       |
+| product_discription    | text       | null: false       |
+| product_category_id    | integer    | null: false       |
+| shipping burden_id     | integer    | null: false       |
+| shipping area_id       | integer    | null: false       |
+| days_to_ship_id        | integer    | null: false       |
+| purchase_price         | integer    | null: false       |
+| user                   | references |                   |
+| purchase               | references |                   |
 
 ### Association
 
@@ -81,11 +83,10 @@ Things you may want to cover:
 | postal_code | string     | null: false      |
 | prefecture  | string     | null: false      |
 | city        | string     | null: false      |
-| street      | text       | null: false      |
-| building    | text       | null: false      |
+| street      | string     | null: false      |
+| building    | string     |                  |
 | phone       | string     | null: false      |
-| user        | references |                  |
-| purchase    | references |                  |
+| purchase    | references | foreign_key: true|
 
 ### Association
 
