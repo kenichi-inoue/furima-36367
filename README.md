@@ -50,17 +50,15 @@ Things you may want to cover:
 | product_name           | string     | null: false       |
 | product_discription    | text       | null: false       |
 | product_category_id    | integer    | null: false       |
-| shipping burden_id     | integer    | null: false       |
-| shipping area_id       | integer    | null: false       |
+| shipping_burden_id     | integer    | null: false       |
+| shipping_area_id       | integer    | null: false       |
 | days_to_ship_id        | integer    | null: false       |
 | purchase_price         | integer    | null: false       |
-| user                   | references |                   |
-| purchase               | references |                   |
+| user                   | references | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- belongs_to :purchase
 
 ## purchases テーブル
 
@@ -78,15 +76,15 @@ Things you may want to cover:
 
 ## ships テーブル
 
-| Column      | Type       | Options          |
-| ----------- | ---------- | ---------------- |
-| postal_code | string     | null: false      |
-| prefecture  | string     | null: false      |
-| city        | string     | null: false      |
-| street      | string     | null: false      |
-| building    | string     |                  |
-| phone       | string     | null: false      |
-| purchase    | references | foreign_key: true|
+| Column                 | Type       | Options                       |
+| -----------            | ---------- | ----------------              |
+| postal_code            | string     | null: false                   |
+| shipping_area_id       | integer    | null: false       |
+| city                   | string     | null: false                   |
+| street                 | string     | null: false                   |
+| building               | string     |                               |
+| phone                  | string     | null: false                   |
+| purchase               | references | null: false, foreign_key: true|
 
 ### Association
 
