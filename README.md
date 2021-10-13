@@ -25,7 +25,7 @@ Things you may want to cover:
 
 # テーブル設計
 
-## users テーブル
+## users テーブル（ユーザー情報）
 
 | Column                      | Type   | Options                    |
 | ------------------          | ------ | -----------                |
@@ -41,45 +41,52 @@ Things you may want to cover:
 ### Association
 
 - has_many :products
-- has_many :ships
+- has_many :purchases
+<!-- - has_many :ships -->
 
-## products テーブル
+## products テーブル（商品情報）
 
-| Column                 | Type       | Options           |
-| ---------              | ---------- | ----------------- |
-| product_name           | string     | null: false       |
-| product_discription    | text       | null: false       |
-| product_category_id    | integer    | null: false       |
-| shipping_burden_id     | integer    | null: false       |
-| shipping_area_id       | integer    | null: false       |
-| days_to_ship_id        | integer    | null: false       |
-| purchase_price         | integer    | null: false       |
-| user                   | references | foreign_key: true |
-
-### Association
-
-- belongs_to :user
-
-## purchases テーブル
-
-| Column      | Type       | Options          |
-| ----------- | ---------- | ---------------- |
-| card_number | string     | null: false      |
-| exp_month   | string     | null: false      |
-| exp_year    | string     | null: false      |
-| user        | references |                  |
+| Column                 | Type       | Options                       |
+| ---------              | ---------- | -----------------             |
+| product_name           | string     | null: false                   |
+| product_discription    | text       | null: false                   |
+| product_category_id    | integer    | null: false                   |
+| product_condition_id   | integer    | null: false                   |
+| shipping_burden_id     | integer    | null: false                   |
+| shipping_area_id       | integer    | null: false                   |
+| days_to_ship_id        | integer    | null: false                   |
+| purchase_price         | integer    | null: false                   |
+| user                   | references | null: false, foreign_key: true|
 
 ### Association
 
 - belongs_to :user
+- has_one :purchase
+<!-- - belongs_to :purchase -->
+
+
+## purchases テーブル（購入記録） 
+
+| Column      | Type       | Options                       |
+| ----------- | ---------- | ----------------              |
+| card_number | string     | null: false                   |
+| exp_month   | string     | null: false                   |
+| exp_year    | string     | null: false                   |
+| user        | references | null: false, foreign_key: true|
+| product     | references | null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :user
+- belongs_to :product 
 - has_one :ship
 
-## ships テーブル
+## ships テーブル（発送情報）
 
 | Column                 | Type       | Options                       |
 | -----------            | ---------- | ----------------              |
 | postal_code            | string     | null: false                   |
-| shipping_area_id       | integer    | null: false       |
+| shipping_area_id       | integer    | null: false                   |
 | city                   | string     | null: false                   |
 | street                 | string     | null: false                   |
 | building               | string     |                               |
@@ -88,5 +95,4 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :user
 - belongs_to :purchase
