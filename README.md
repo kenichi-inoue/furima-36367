@@ -69,9 +69,9 @@ Things you may want to cover:
 
 | Column      | Type       | Options                       |
 | ----------- | ---------- | ----------------              |
-| card_number | string     | null: false                   |
+<!-- | card_number | string     | null: false                   |
 | exp_month   | string     | null: false                   |
-| exp_year    | string     | null: false                   |
+| exp_year    | string     | null: false                   | -->
 | user        | references | null: false, foreign_key: true|
 | product     | references | null: false, foreign_key: true|
 
