@@ -42,7 +42,6 @@ Things you may want to cover:
 
 - has_many :products
 - has_many :purchases
-<!-- - has_many :ships -->
 
 ## products テーブル（商品情報）
 
@@ -62,16 +61,12 @@ Things you may want to cover:
 
 - belongs_to :user
 - has_one :purchase
-<!-- - belongs_to :purchase -->
 
 
 ## purchases テーブル（購入記録） 
 
 | Column      | Type       | Options                       |
 | ----------- | ---------- | ----------------              |
-<!-- | card_number | string     | null: false                   |
-| exp_month   | string     | null: false                   |
-| exp_year    | string     | null: false                   | -->
 | user        | references | null: false, foreign_key: true|
 | product     | references | null: false, foreign_key: true|
 
