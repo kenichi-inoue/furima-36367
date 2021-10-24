@@ -4,11 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         validates :nickname, presence: true
-         validates :user_family_name, presence: true
-         validates :user_first_name, presence: true
-         validates :katakana_user_family_name, presence: true
-         validates :katakana_user_first_name, presence: true
-         validates :birthday, presence: true
-         
+  validates :nickname, presence: true, length: { maximum: 40 }
+  validates :user_family_name, presence: true
+  validates :user_first_name, presence: true
+  validates :katakana_user_family_name, presence: true
+  validates :katakana_user_first_name, presence: true
+  validates :birthday, presence: true
+
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i.freeze
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 end
