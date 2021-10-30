@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.integer :product_category_id
       t.integer :product_condition_id
       t.integer :shipping_burden_id 
+      t.integer :shipping_area_id 
       t.integer :days_to_ship_id  
       t.integer :purchase_price 
       t.references :user, null: false, foreign_key: true
