@@ -35,12 +35,13 @@ ActiveRecord::Schema.define(version: 2021_10_28_122051) do
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "product_name", default: "", null: false
-    t.text "product_discription"
-    t.integer "product_category_id"
-    t.integer "product_condition_id"
-    t.integer "shipping_burden_id"
-    t.integer "days_to_ship_id"
-    t.integer "purchase_price"
+    t.text "product_discription", null: false
+    t.integer "product_category_id", null: false
+    t.integer "product_condition_id", null: false
+    t.integer "shipping_burden_id", null: false
+    t.integer "shipping_area_id", null: false
+    t.integer "days_to_ship_id", null: false
+    t.integer "purchase_price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
