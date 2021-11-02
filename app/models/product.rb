@@ -22,6 +22,10 @@ class Product < ApplicationRecord
 
   validates :image, presence: true
 
-  validates :days_to_ship_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :product_category_id, numericality: { other_than: 1}
+  validates :product_condition_id, numericality: { other_than: 1}
+  validates :shipping_burden_id, numericality: { other_than: 1}
+  validates :shipping_area_id, numericality: { other_than: 1}
+  validates :days_to_ship_id, numericality: { other_than: 1}
 
 end
