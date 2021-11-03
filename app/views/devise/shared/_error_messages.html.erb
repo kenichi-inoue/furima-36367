@@ -16,3 +16,22 @@
     </ul>
   </div>
 <% end %>
+
+<% if @product.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+     <%= aa %>
+    </ul>
+    <h2>
+      <%= I18n.t("errors.messages.not_saved",
+                 count: @product.errors.count,
+                 resource: @product.class.model_name.human.downcase)
+       %>
+    </h2>
+    <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li class="error-message"><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
