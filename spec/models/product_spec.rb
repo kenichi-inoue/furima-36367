@@ -124,7 +124,7 @@ RSpec.describe Product, type: :model do
       end
 
       it 'ユーザーが紐付いていること' do
-        @product.user_id = '50'
+        @product.user_id = '4'
         @product.valid?
         expect(@product.errors.full_messages).to include("User must exist")
       end

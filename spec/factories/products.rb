@@ -10,6 +10,8 @@ FactoryBot.define do
   days_to_ship_id{2}
   purchase_price {Faker::Number.between(from: 300, to: 9999999)}
 
+  user_id{3}
+
   after(:build) do |product|
     product.image.attach(io: File.open('public/images/test_image.png'), filename: 'test_image.png')
   end
