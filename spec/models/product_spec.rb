@@ -7,9 +7,9 @@ RSpec.describe Product, type: :model do
   end
 
   describe '出品商品情報入力' do
+    
     context '商品情報入力できる場合' do
       it "すべての項目が入力されていれば登録できる" do
-        # @product.image = nil
         expect(@product).to be_valid
       end
     end
@@ -81,7 +81,6 @@ RSpec.describe Product, type: :model do
         expect(@product.errors.full_messages).to include("Product category can't be blank")
       end
 
-      
     end
   end
 end
