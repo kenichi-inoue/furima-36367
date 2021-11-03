@@ -3,6 +3,8 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require("./product_price");
+
 require("@rails/ujs").start()
 // require("turbolinks").start() 削除 211009
 require("@rails/activestorage").start()
