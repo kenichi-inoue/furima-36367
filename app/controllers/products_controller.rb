@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
+  # before_action :set_prototype, only: [:edit, :show, :update, :destroy]
+  before_action :set_product, only: [:show]
+  before_action :move_to_index, except: [:index, :show, :new, :create]
 
   def index
     @products = Product.all.order(created_at: :desc) 
@@ -19,7 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.new
+
   end
 
   private
@@ -28,4 +31,15 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:product_name, :product_discription, :product_category_id, :product_condition_id,
                                     :shipping_burden_id, :shipping_area_id, :days_to_ship_id, :image, :purchase_price).merge(user_id: current_user.id)
   end
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
+  def move_to_index
+      unless user_signed_in? && (current_user.name == @Product.user.name)
+        redirect_to action: :index
+      end
+  end
+
 end
