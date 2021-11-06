@@ -128,7 +128,7 @@
     </div>
     <ul class='item-lists'>
 
-        <% @product.each do |product| %>
+        <% @products.each do |products| %>
 
       <li class='list'>
 
@@ -148,7 +148,7 @@
             <%= product.product_name %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格 " %><%= product.purchase_price %>円
+            <span><%= product.purchase_price %>円
             <br>
             <%= product.shipping_burden.name %>
 
@@ -167,7 +167,7 @@
 
       <li class='list'>
 
-      <% if @product.length == 0 %>
+      <% if @products.length == 0 %>
 
         <%= link_to '#' do %>
         <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
