@@ -2,7 +2,9 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
-    # @product = Product.all
+    @product = Product.all
+    # @shipping_burden = ShippingBurden.find_by(id: @product.shipping_burden_id)
+
   end
 
   def new
