@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   before_action :move_to_index, except: [:index, :show, :new, :create]
 
   def index
-    @products = Product.all.order(created_at: :desc) 
+    @products = Product.all.order(created_at: :desc)
   end
 
   def new
@@ -22,8 +22,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    # @products = Product.all.order(created_at: :desc) 
-
+    # @products = Product.all.order(created_at: :desc)
   end
 
   private
@@ -38,9 +37,6 @@ class ProductsController < ApplicationController
   end
 
   def move_to_index
-      unless user_signed_in? && (current_user.name == @Product.user.name)
-        redirect_to action: :index
-      end
+    redirect_to action: :index unless user_signed_in? && (current_user.name == @Product.user.name)
   end
-
 end

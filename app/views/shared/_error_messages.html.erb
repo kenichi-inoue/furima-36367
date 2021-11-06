@@ -1,37 +1,9 @@
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-     <%= aa %>
-    </ul>
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: @user.errors.count,
-                 resource: @user.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li class="error-message"><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<% if @product.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-     <%= aa %>
-    </ul>
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: @product.errors.count,
-                 resource: @product.class.model_name.human.downcase)
-       %>
-    </h2>
-    <ul>
-      <% @product.errors.full_messages.each do |message| %>
-        <li class="error-message"><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
+<% if model.errors.any? %>
+<div class="error-alert">
+  <ul>
+    <% model.errors.full_messages.each do |message| %>
+    <li class='error-message'><%= message %></li>
+    <% end %>
+  </ul>
+</div>
 <% end %>
