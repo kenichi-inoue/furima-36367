@@ -4,7 +4,6 @@ class ProductsController < ApplicationController
   def index
     @product = Product.all
     # @shipping_burden = ShippingBurden.find_by(id: @product.shipping_burden_id)
-
   end
 
   def new
@@ -23,7 +22,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:product_name, :product_discription, :product_category_id, :product_condition_id, :shipping_burden_id, :shipping_area_id, :days_to_ship_id, :image, :purchase_price).merge(user_id: current_user.id)
+    params.require(:product).permit(:product_name, :product_discription, :product_category_id, :product_condition_id,
+                                    :shipping_burden_id, :shipping_area_id, :days_to_ship_id, :image, :purchase_price).merge(user_id: current_user.id)
   end
-
 end
