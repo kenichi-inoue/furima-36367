@@ -47,6 +47,6 @@ class ProductsController < ApplicationController
 
   def move_to_index
     # redirect_to action: :index unless user_signed_in? && (current_user.name == @Product.user.name)
-    redirect_to action: :index unless user_signed_in? && (current_user.id == @product.user_id)
+    redirect_to action: :new unless user_signed_in? && (current_user.id == @product.user_id)
   end
 end
