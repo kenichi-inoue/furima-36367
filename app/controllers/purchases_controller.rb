@@ -2,15 +2,18 @@ class PurchasesController < ApplicationController
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @purchase_ship = PurchaseShip.new
+    @product = Product.find(params[:product_id])
   end
 
   def create
     @purchase_ship = PurchaseShip.new(purchase_params)
+    @product = Product.find(params[:product_id])
     if @purchase_ship.valid?
       @purchase_ship.save
       redirect_to root_path
     else
       render :index
+
     end
   end
 
