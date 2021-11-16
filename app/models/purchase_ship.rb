@@ -9,7 +9,7 @@ class PurchaseShip
     validates :shipping_area_id, numericality: { other_than: 1, message: 'is not included in the list' }
     validates :city
     validates :street
-    validates :phone
+    validates :phone, length: { in: 10..11 }
   end
 
   def save
