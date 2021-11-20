@@ -1,6 +1,7 @@
 class PurchaseShip
   include ActiveModel::Model
-  attr_accessor :user_id, :product_id, :postal_code, :shipping_area_id, :city, :street, :building, :phone
+  attr_accessor :user_id, :product_id, :postal_code, :shipping_area_id, :city, :street, :building, :phone, :token, :purchase_price 
+
   
   with_options presence: true do
     validates :user_id
@@ -10,6 +11,8 @@ class PurchaseShip
     validates :city
     validates :street
     validates :phone, length: { in: 10..11 }
+    validates :token, presence: true
+    
   end
 
   def save
