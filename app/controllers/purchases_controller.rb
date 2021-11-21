@@ -1,14 +1,19 @@
 class PurchasesController < ApplicationController
+
+  before_action :set_product_id, only: [:index, :create]
+  before_action :move_to_index_two, only: [:index]
+
   def index
     #フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @purchase_ship = PurchaseShip.new
-    @product = Product.find(params[:product_id])
+    # @product = Product.find(params[:product_id])
+
   end
 
     def create
 
     @purchase_ship = PurchaseShip.new(purchase_params)
-    @product = Product.find(params[:product_id])
+    # @product = Product.find(params[:product_id])
     if @purchase_ship.valid?
       pay_item
       @purchase_ship.save
@@ -34,5 +39,15 @@ class PurchasesController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+
+  def set_product_id
+    @product = Product.find(params[:product_id])
+  end
+
+  def move_to_index_two
+    redirect_to root_path if @product.purchase.present?
+    redirect_to root_path if user_signed_in? && (current_user.id == @product.user_id) 
+  end
+
 
 end
