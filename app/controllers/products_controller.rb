@@ -1,4 +1,4 @@
-  class ProductsController < ApplicationController
+class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_product, only: [:edit, :show, :update, :destroy]
   before_action :move_to_index, except: [:index, :show, :new, :create]
@@ -56,7 +56,6 @@
   end
 
   def move_to_index_three
-    redirect_to root_path if @product.purchase.present? && user_signed_in? && (current_user.id == @product.user_id) 
+    redirect_to root_path if @product.purchase.present? && user_signed_in? && (current_user.id == @product.user_id)
   end
-
 end
