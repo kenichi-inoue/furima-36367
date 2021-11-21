@@ -80,6 +80,13 @@ RSpec.describe PurchaseShip, type: :model do
         @purchase_ship.valid?
         expect(@purchase_ship.errors.full_messages).to include("Phone is too short (minimum is 10 characters)")
       end
+
+      it 'tokenが必須であること' do
+        @purchase_ship.token = ''
+        @purchase_ship.valid?
+        expect(@purchase_ship.errors.full_messages).to include("Token can't be blank")
+      end
+      
     end
   end
 end
