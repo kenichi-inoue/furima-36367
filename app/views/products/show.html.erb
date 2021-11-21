@@ -25,7 +25,7 @@
       </span>
     </div>
 
-    <% if user_signed_in? && (current_user.id == @product.user_id)   %>
+    <% if user_signed_in? && (current_user.id == @product.user_id && !@product.purchase.present?)   %>
 
     <%= link_to "商品の編集", edit_product_path, method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
