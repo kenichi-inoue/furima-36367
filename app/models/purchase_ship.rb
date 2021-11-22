@@ -1,7 +1,6 @@
 class PurchaseShip
   include ActiveModel::Model
-  attr_accessor :user_id, :product_id, :postal_code, :shipping_area_id, :city, :street, :building, :phone, :token,
-                :purchase_price
+  attr_accessor :user_id, :product_id, :postal_code, :shipping_area_id, :city, :street, :building, :phone, :token
 
   with_options presence: true do
     validates :user_id
@@ -15,10 +14,7 @@ class PurchaseShip
   end
 
   def save
-    # 購入情報を保存し、変数purchaseに代入する
     purchase = Purchase.create(user_id: user_id, product_id: product_id)
-    # 住所を保存する
-    # donation_idには、変数donationのidと指定する
     Ship.create(postal_code: postal_code, shipping_area_id: shipping_area_id, city: city, street: street, building: building,
                 phone: phone, purchase_id: purchase.id)
   end
