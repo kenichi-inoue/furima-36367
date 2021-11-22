@@ -3,7 +3,6 @@ class PurchasesController < ApplicationController
   before_action :move_to_index_two, only: [:index]
 
   def index
-    # フォームオブジェクトのインスタンスを生成し、インスタンス変数に代入する
     @purchase_ship = PurchaseShip.new
   end
 
@@ -41,7 +40,9 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index_two
-    redirect_to root_path if @product.purchase.present?
-    redirect_to root_path if user_signed_in? && (current_user.id == @product.user_id)
+    return redirect_to new_user_session_path unless user_signed_in?
+    return redirect_to root_path if @product.purchase.present?
+    redirect_to root_path if current_user.id == @product.user_id
   end
+
 end

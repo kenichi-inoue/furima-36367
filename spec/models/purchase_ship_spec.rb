@@ -26,12 +26,6 @@ RSpec.describe PurchaseShip, type: :model do
         expect(@purchase_ship.errors.full_messages).to include("Postal code can't be blank")
       end
 
-      # it 'buildingが必須であること' do
-      #   @purchase_ship.building = ''
-      #   @purchase_ship.valid?
-      #   expect(@purchase_ship.errors.full_messages).to include("Product can't be blank")
-      # end
-
       it '郵便番号は、「3桁ハイフン4桁」の半角文字列のみ保存可能なこと' do
         @purchase_ship.postal_code = '158077'
         @purchase_ship.valid?
@@ -45,7 +39,7 @@ RSpec.describe PurchaseShip, type: :model do
       end
 
       it '都道府県に「--」が選択されていないこと' do
-        @purchase_ship.shipping_area_id = '--'
+        @purchase_ship.shipping_area_id = '1'
         @purchase_ship.valid?
         expect(@purchase_ship.errors.full_messages).to include('Shipping area is not included in the list')
       end
@@ -75,16 +69,23 @@ RSpec.describe PurchaseShip, type: :model do
       end
 
       it '電話番号は、10桁以上の半角数値のみ' do
-        @purchase_ship.phone = '200'
+        @purchase_ship.phone = '200００'
         @purchase_ship.valid?
         expect(@purchase_ship.errors.full_messages).to include('Phone is too short (minimum is 10 characters)')
       end
 
-      it 'tokenが必須であること' do
-        @purchase_ship.token = ''
+      it 'ユーザーが紐付いていること' do
+        @purchase_ship.user_id = nil
         @purchase_ship.valid?
-        expect(@purchase_ship.errors.full_messages).to include("Token can't be blank")
+        expect(@purchase_ship.errors.full_messages).to include("User can't be blank")
       end
+      
+      it '商品が紐付いていること' do
+        @purchase_ship.product_id = nil
+        @purchase_ship.valid?
+        expect(@purchase_ship.errors.full_messages).to include("Product can't be blank")
+      end
+
     end
   end
 end
