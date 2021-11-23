@@ -9,8 +9,11 @@ class PurchaseShip
     validates :shipping_area_id, numericality: { other_than: 1, message: 'is not included in the list' }
     validates :city
     validates :street
+    validates :token
     validates :phone, length: { in: 10..11 }
-    validates :token, presence: true
+    validates :phone, format: { with: /\A[0-9]+\z/, message: 'is valid only for half-width number' }
+
+
   end
 
   def save

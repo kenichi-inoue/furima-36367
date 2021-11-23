@@ -77,7 +77,7 @@ RSpec.describe PurchaseShip, type: :model do
       it '電話番号は、半角数値のみ' do
         @purchase_ship.phone = '0753945333え０'
         @purchase_ship.valid?
-        expect(@purchase_ship.errors.full_messages).to include('Phone is too long (maximum is 11 characters)')
+        expect(@purchase_ship.errors.full_messages).to include('Phone is valid only for half-width number')
       end
 
       it 'tokenが必須であること' do
