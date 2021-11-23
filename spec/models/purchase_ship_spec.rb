@@ -62,16 +62,22 @@ RSpec.describe PurchaseShip, type: :model do
         expect(@purchase_ship.errors.full_messages).to include("Phone can't be blank")
       end
 
-      it '電話番号は、11桁以内の半角数値のみ' do
+      it '電話番号は、11桁以内のみ' do
         @purchase_ship.phone = '0753945333333'
         @purchase_ship.valid?
         expect(@purchase_ship.errors.full_messages).to include('Phone is too long (maximum is 11 characters)')
       end
 
-      it '電話番号は、10桁以上の半角数値のみ' do
-        @purchase_ship.phone = '200００'
+      it '電話番号は、10桁以上のみ' do
+        @purchase_ship.phone = '200'
         @purchase_ship.valid?
         expect(@purchase_ship.errors.full_messages).to include('Phone is too short (minimum is 10 characters)')
+      end
+
+      it '電話番号は、半角数値のみ' do
+        @purchase_ship.phone = '07539453333え０'
+        @purchase_ship.valid?
+        expect(@purchase_ship.errors.full_messages).to include('Phone is too long (maximum is 11 characters)')
       end
 
       it 'tokenが必須であること' do
