@@ -135,14 +135,14 @@
         <%= link_to "#" do %>
         
         <div class='item-img-content'>
-          <%# <%= image_tag product.image, class: "item-img" %> 
         <%= link_to image_tag(product.image, class: "item-img" ), product_path(product.id), method: :get  %>
 
-          <%# 商品が売れていればsold outを表示しましょう %>
+          <% if product.purchase.present? %>
           <div class='sold-out'>
-            <span>Sold Out!!</span>
+            <span>Sold Out!! </span>
           </div>
-          <%# //商品が売れていればsold outを表示しましょう %>
+
+          <% end %>
 
         </div>
         <div class='item-info'>

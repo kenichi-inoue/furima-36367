@@ -9,6 +9,8 @@ require("@rails/ujs").start()
 // require("turbolinks").start() 削除 211009
 require("@rails/activestorage").start()
 require("channels")
+require("../card")
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
