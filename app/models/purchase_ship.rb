@@ -11,10 +11,8 @@ class PurchaseShip
     validates :street
     validates :token
     validates :phone, length: { in: 10..11 }
-    validates :phone, format: { with: /\A[0-9]+\z/, message: 'is valid only for half-width number' }
-
-
   end
+  validates :phone, format: { with: /\A[0-9]+\z/, message: 'is valid only for half-width number' }
 
   def save
     purchase = Purchase.create(user_id: user_id, product_id: product_id)

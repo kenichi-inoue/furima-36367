@@ -8,6 +8,7 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase_ship = PurchaseShip.new(purchase_params)
+    # binding.pry
     if @purchase_ship.valid?
       pay_item
       @purchase_ship.save
@@ -16,12 +17,12 @@ class PurchasesController < ApplicationController
       render :index
     end
   end
-  
+
   private
 
   def purchase_params
-    params.permit(:postal_code, :shipping_area_id, :city, :street, :building, :phone, :product_id, :purchase_price).merge(
-      user_id: current_user.id, token: params[:token]
+    params.require(:purchase_ship).permit(:postal_code, :shipping_area_id, :city, :street, :building, :phone,:purchase_price).merge(
+      user_id: current_user.id, token: params[:token], product_id: params[:product_id]
     )
   end
 
