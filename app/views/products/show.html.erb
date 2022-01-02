@@ -110,11 +110,18 @@
   <%# /コメント表示 %>
 
 <%# 新コメント追加 %>
-<div class="comment-form">
+<%# <div class="comment-form"> %>
+<div class="comment-box">
   <% if user_signed_in? %>
     <%= form_with model: [@product, @comment], id: "comment-form" do |f| %>
       <%= f.text_area :text , class: "comment-text"%>
-      <%= f.submit "コメントをする", class: "comment-submit" %>
+      <%# <%= f.submit "コメントをする", class: "comment-submit" % %>
+      <p class="comment-warn">
+        相手のことを考え丁寧なコメントを心がけましょう。
+        <br>
+        不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      </p>
+      <%= f.submit "コメントをする", class: "comment-btn" %>
     <% end %>
   <% end %>
 </div>
@@ -133,7 +140,7 @@
         <%# <span>コメントする<span>
       </button>
     </form>
-  </div> %> %>
+  </div> % %>
 <%# /コメントのための最初の部分 %>
 
   <div class="links">

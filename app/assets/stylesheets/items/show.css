@@ -148,13 +148,13 @@
   text-align: center;
 }
 
-.comment-text {
+/* .comment-text {
   width: 100%;
   height: 100px;
   padding: 10px;
   border: solid 2px #dedede;
   resize: none;
-}
+} */
 
 .comment-warn {
   padding: 10px;
@@ -165,8 +165,8 @@
 
 .comment-btn {
   line-height: 48px;
-  background-color: #3CCACE;
-  border: 1px solid #3CCACE;
+  background-color: hsla(240, 33%, 1%, 0.411);
+  border: 2px solid #000303;
   color: #fff;
   width: 50%;
   min-width: 150px;
