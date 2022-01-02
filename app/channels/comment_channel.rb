@@ -1,7 +1,8 @@
 class CommentChannel < ApplicationCable::Channel
   def subscribed
-    # stream_from "some_channel"
-    stream_from "comment_channel" #追加
+    @product = Product.find(params[:product_id]) # 追記
+    stream_for @product # 追記
+    # stream_from "comment_channel" #削除
   end
 
   def unsubscribed
