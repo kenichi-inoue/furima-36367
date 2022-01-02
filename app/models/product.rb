@@ -10,6 +10,8 @@ class Product < ApplicationRecord
   # has_one_attached :purchase
   has_one_attached :image
 
+  has_many :comments
+
   validates :product_name, presence: true
   validates :product_discription, presence: true
   validates :product_category_id, presence: true
