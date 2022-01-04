@@ -1,8 +1,11 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :destroy]
   before_action :set_product, only: [:edit, :show, :update, :destroy]
+
   before_action :move_to_index, except: [:index, :show, :new, :create]
   before_action :move_to_index_three, only: [:edit]
+  before_action :set_product_two, only: [:show]
+
 
   def index
     @products = Product.all.order(created_at: :desc)
@@ -49,6 +52,11 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def set_product_two
+    @comments = @product.comments.includes(:user)
+    @comment = Comment.new
   end
 
   def move_to_index
